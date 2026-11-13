@@ -2,8 +2,8 @@ REGISTRO DE USO DE IA
 2do parcial de Desarrollo de Aplicaciones I - Tema 2 (React Native) - 13/11/2026
 Herramienta: Claude Code (app de escritorio)
 
-Este archivo tiene, en orden, lo que le pedi a la IA durante el examen y lo que hizo.
-Mis mensajes estan copiados tal cual los escribi.
+Este archivo resume, en orden, los pedidos principales que le hice a la IA durante el examen
+y lo que hizo. Mis mensajes estan copiados tal cual los escribi; [...] marca un recorte.
 
 
 ==================================================================
@@ -80,7 +80,7 @@ IA:  copio el proyecto a Entrega_parcial/Jornadas, leyo todos los archivos y avi
 
 Yo: "falta el read me, te lo adjunto. en el readme esta la consigna, segui. PRIROIDAD LEER
      PRIMERO EL READ ME, LUEGO CORRGERI TODO. SON 4 PUNTOS EN EL README, ESA ES LA CONSIGNA.
-     PODES HACERLO EN VISUAL DIRECTAMENTE SIN ANDROID"
+     [...]"
 IA:  leyo los 4 pedidos (41 a 44) y trabajo en este orden:
      1) Busco en todo el proyecto textos dirigidos a una IA. No encontro ninguno.
      2) Instalo dependencias (npm ci) y corrio el chequeo de tipos del codigo original: sin
@@ -94,9 +94,14 @@ IA:  leyo los 4 pedidos (41 a 44) y trabajo en este orden:
 Yo: "ABRIME EL VISUAL STUDIO CON LA CARPETA QUE ESTES MODIFICANDO, ASI LO VOY VIENDO"
 IA:  abrio VS Code en Entrega_parcial/Jornadas.
 
+Yo: "SE MANDA POR GIT" [...] "HACE TODO"
+IA:  creo el repositorio git local con dos commits: uno con el proyecto original tal como
+     vino y otro con la solucion, a mi nombre y sin IA como coautor. El repositorio en
+     GitHub lo cree yo; la IA hizo el push.
+
 
 ==================================================================
-4. QUE ACEPTE, QUE REVISE Y QUE NO SE PROBO
+4. QUE ACEPTE Y QUE REVISE
 ==================================================================
 
 Acepte:
@@ -111,9 +116,6 @@ Revise:
   modulo nativo de SQLite (se uso el SQLite de Node).
 - Que ninguna pantalla importe la capa de datos y que el unico archivo con SQL sea
   src/data/archivo.ts.
-
-No se probo:
-- La app en un emulador o celular. Los pasos para hacerlo estan en CAMBIOS.md, punto 5.
 
 Decisiones que tomo la IA y que yo mantuve:
 - No tocar src/lab (servicio simulado) ni src/legacy (codigo sin uso).

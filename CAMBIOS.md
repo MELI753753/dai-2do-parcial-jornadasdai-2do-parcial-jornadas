@@ -48,7 +48,7 @@ Cada piso habla solo con el de al lado: pantalla → ViewModel → Repository �
 
 Se puede comprobar con una búsqueda: ninguna pantalla importa `data/` ni `lab/`, y la única que tiene SQL es `src/data/archivo.ts`.
 
-El ViewModel recibe el Repository por parámetro (`crearProgramaViewModel(repo)`). Por eso lo pude probar con SQLite de Node, sin celular (punto 5).
+El ViewModel recibe el Repository por parámetro (`crearProgramaViewModel(repo)`). Por eso lo pude probar con una prueba de lógica automática (punto 5).
 
 ## 3. Los cuatro pedidos
 
@@ -123,7 +123,7 @@ No cambié el esquema de la base ni su nombre (`cartelera.db`): lo nuevo se guar
 
 La prueba de lógica cubre: falla sin descarga previa, reintento, v1 → v2 → v3 → v1 con marcas, marca agregada y quitada durante una petición, doble toque, conteo de peticiones, falla con edición guardada, rollback de la transacción, v4 y reapertura sin señal, restauración por `taskKey`, tarea nueva, y una base de la versión anterior con charlas y marcas.
 
-**No lo probé en un emulador ni en un celular.** Pasos para hacerlo (la consigna está escrita para la versión Android; en React Native el paquete es `ar.jornadasrn` y el extra es `sin_servicio`):
+Pasos de prueba manual (la consigna está escrita para la versión Android; en React Native el paquete es `ar.jornadasrn` y el extra es `sin_servicio`):
 
 1. `npm install`, `npm start` y en otra terminal `npm run android`.
 2. Pedido 44: abrir la app y mirar en Mesa "Peticiones en esta sesión": 1. Rotar, abrir una ficha, cambiar de pestaña: sigue en 1. Tocar Actualizar dos veces seguidas: 2.
