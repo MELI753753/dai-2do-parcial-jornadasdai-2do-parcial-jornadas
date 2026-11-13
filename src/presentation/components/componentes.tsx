@@ -1,6 +1,7 @@
+// PANTALLA: piezas visuales compartidas. Reciben datos ya resueltos y avisan toques.
 import React from 'react';
 import {Pressable,StyleSheet,Text,View} from 'react-native';
-import {Charla} from '../data/archivo';
+import type {Charla} from '../../domain/agenda';
 
 export const s = StyleSheet.create({
   pagina:{flex:1,backgroundColor:'#f8f7f1',padding:16},
