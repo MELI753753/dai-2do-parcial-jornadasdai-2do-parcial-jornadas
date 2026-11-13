@@ -119,9 +119,15 @@ No cambié el esquema de la base ni su nombre (`cartelera.db`): lo nuevo se guar
 |---|---|
 | `npm run typecheck` | Sin errores |
 | Bundle de Android con Metro (`npx react-native bundle --platform android ...`) | Sin errores (958 KB) |
+| Compilación del APK (`assembleRelease`, JDK 17) | BUILD SUCCESSFUL |
+| Prueba en emulador (Android 37, x86_64): los cuatro pedidos, manejando la app por `adb` (toques y lectura de pantalla) | 31 comprobaciones bien |
 | Prueba de lógica en Node: ViewModel, Repository, `archivo.ts` y servicio reales, con el SQLite de Node en lugar del módulo nativo | 31 comprobaciones, 31 bien |
 
 La prueba de lógica cubre: falla sin descarga previa, reintento, v1 → v2 → v3 → v1 con marcas, marca agregada y quitada durante una petición, doble toque, conteo de peticiones, falla con edición guardada, rollback de la transacción, v4 y reapertura sin señal, restauración por `taskKey`, tarea nueva, y una base de la versión anterior con charlas y marcas.
+
+La prueba en el emulador recorrió: arranque vacío sin señal y Reintentar; conteo de peticiones al abrir, rotar, abrir una ficha, cambiar de pestaña y con doble toque; filtros durante una espera de 8 segundos; Día 2 + Datos con ficha abierta, rotación, app al fondo, `adb shell am kill` y tarea nueva; v1 → v2 → v3 → v1 con marcas; marca agregada y quitada durante una petición de 8 segundos; falla con edición guardada; v4 y reapertura sin señal. En la primera pasada, dos comprobaciones no fueron válidas porque el script de prueba miró la pantalla cuando la petición ya había terminado; las repetí con la demora de 8 segundos y dieron bien.
+
+El emulador usa páginas de memoria de 16 KB y React Native 0.76 no está compilado para eso: Android muestra un aviso de compatibilidad al abrir la app y la ejecuta en modo compatible. No es un error de la app.
 
 Pasos de prueba manual (la consigna está escrita para la versión Android; en React Native el paquete es `ar.jornadasrn` y el extra es `sin_servicio`):
 

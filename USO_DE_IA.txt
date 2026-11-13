@@ -117,6 +117,13 @@ Revise:
 - Que ninguna pantalla importe la capa de datos y que el unico archivo con SQL sea
   src/data/archivo.ts.
 
+Prueba en emulador (se hizo despues de la primera entrega):
+Yo: "DALE PROBALO"
+IA:  compilo el APK (assembleRelease con JDK 17), lo instalo en el emulador de Android y
+     recorrio los cuatro pedidos manejando la app por adb: 31 comprobaciones bien. Dos
+     comprobaciones de la primera pasada no fueron validas por la velocidad del script de
+     prueba y las repitio con la demora de 8 segundos.
+
 Decisiones que tomo la IA y que yo mantuve:
 - No tocar src/lab (servicio simulado) ni src/legacy (codigo sin uso).
 - No cambiar el esquema de la base: lo nuevo se guarda en la tabla "ajustes" que ya existia,
@@ -129,5 +136,29 @@ Decisiones que tomo la IA y que yo mantuve:
 5. PREGUNTAS QUE LE HICE DESPUES DE LEER LA SOLUCION
 ==================================================================
 
-(se completa a medida que pregunto)
+Yo: "11 ES mi agenda? o es codigo?"
+IA:  11 es el identificador (id) de una charla, no es "Mi agenda" ni codigo. Es un dato: la
+     charla "Compose en produccion" (Android, Dia 1, 09:00). Sale del campo "id" de
+     src/lab/programa-1.json y se guarda en SQLite, tabla charlas, columna id (clave
+     primaria). La app reconoce cada charla por su id y no por su titulo, porque el README
+     dice que los identificadores son estables aunque cambie el titulo: en v2 la 11 cambia de
+     nombre y sala pero sigue siendo la 11 y conserva la marca. "Mi agenda" es la pestana que
+     muestra las charlas marcadas (columna favorita en 1).
+
+Yo: "si tengo que ocmpletar una tabla que dice charla en columan1, columna 2 es codigo y
+     columna 3 es mi agenda y tengo en filas 11, 24, y 90 y hay que completar con si y no
+     que pongo en cada una"
+IA:  explico la regla: una charla esta en el catalogo si viene en la edicion vigente, y esta
+     en Mi agenda si ademas el usuario la marco. La retirada pierde la marca y la nueva entra
+     sin marcar. Para la v3: la 11 (retirada) no esta en el catalogo ni en Mi agenda; la 24
+     (vigente) esta en el catalogo y conserva la marca si la tenia; la 90 (nueva) esta en el
+     catalogo y no en Mi agenda. Me pidio el enunciado exacto para confirmar.
+
+Yo: "escribi el mensja que deberia ver cada persona"
+IA:  listo el mensaje que muestra la app en cada situacion del pedido 41: con edicion
+     guardada y sin senal, "Sin senal: se estan usando datos guardados." junto a la lista;
+     sin descarga previa y sin senal, "No se pudo consultar el programa." y el boton
+     Reintentar; con v4 exitosa, "La edicion vigente esta sin charlas programadas."; al
+     reabrir sin senal despues de v4, los dos textos juntos y sin Reintentar. Explico que el
+     mensaje sale de dos datos del ViewModel: carga (cargando, listo, error) y hayEdicion.
 
